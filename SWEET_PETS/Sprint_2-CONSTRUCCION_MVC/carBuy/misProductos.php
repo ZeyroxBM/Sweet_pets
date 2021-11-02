@@ -1,5 +1,19 @@
 <?php 
     session_start();
+    include './conexion.php';
+    if (isset($_SESSION['carrito'])) {
+        
+    }else {
+        if (isset($_GET['id'])) {
+            $nombre = "";
+            $precio = 0;
+            $imagen ="";
+            $re = $conn->query("SELECT * FROM productos WHERE id=".$_GET['id']);
+                while ($f = mysqli_fetch_array($re)) {
+                # code...
+            }
+        }
+    }
 ?>
 
 
@@ -9,25 +23,25 @@
 <head>
     <meta charset="utf-8" />
     <title>Carrito de Compras</title>
-
+    
     <!-- link css -->
     <link rel="stylesheet" href="./assets/css/detalles/ab-sec-det.css">
     <link rel="stylesheet" href="./assets/css/detalles/glob-det.css">
     <link rel="stylesheet" href="./assets/css/detalles/hed-sect-det.css">
     <link rel="stylesheet" href="./assets/css/detalles/nav-sec-det.css">
     <link rel="stylesheet" href="./assets/css/detalles/serv-sec-det.css">
-
+    
     <!-- boxicons link -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-
+    
     <!-- default color skin -->
     <link rel="stylesheet" type="text/css" href="./assets/css/skin/col-1.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/skin/col-2.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/skin/col-3.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/skin/col-4.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/skin/col-5.css">
-
-
+    
+    
     <script type="text/javascript" href="./js/scripts.js"></script>
     <script type="text/javascript" href="js/hamburguer.js">
     </script>
@@ -35,7 +49,7 @@
 
 <body>
     <!-- header start -->
-
+    
     <header class="header">
         <div class="container">
             <div class="row justify-content-between">
@@ -43,10 +57,10 @@
                     <a href="index.html">sweet pets</a>
                 </div>
                 <div class="ham-cart">
-
-                        <a href="./misProductos.php	" class="cart hover-in-shadow"><i class='bx bx-cart-alt'></i></a>
-                
-                        <a href="./#" class="user hover-in-shadow"><i class='bx bxs-user-circle'></i></a>
+                    
+                    <a href="./misProductos.php	" class="cart hover-in-shadow"><i class='bx bx-cart-alt'></i></a>
+                    
+                    <a href="./#" class="user hover-in-shadow"><i class='bx bxs-user-circle'></i></a>
                     
                     <div class="hamburger-btn hover-in-shadow">
                         <span></span>
@@ -55,12 +69,12 @@
             </div>
         </div>
     </header>
-
+    
     <!-- header end -->
-
-
+    
+    
     <!-- menu navegacion start -->
-
+    
     <nav class="nav-menu">
         <div class="close-nav-menu outer-shadow hover-in-shadow">&times;</div>
         <div class="nav-menu-inner">
@@ -80,9 +94,9 @@
         <!-- copyright text -->
         <p class="copyright-text">&copy; 2021 The ZeyroxBM</p>
     </nav>
-
+    
     <!-- menu navegacion end -->
-
+    
     <section class="service-section section">
         <div class="container">
             <div class="row">
@@ -90,52 +104,49 @@
                     <h2 data-heading='productos'>mis Mascotas</h2>
                 </div>
             </div>
-            <div class="row">
             
-                <?php 
-
-                    $total=0;
-                    if(isset($_SESSION['carrito'])){
-                        $datos=$_SESSION["carrito"];
-                        
-                        for ($i=0; $i < count($datos); $i++) { 
-                ?>
-
-                            <div class="producto">
-                                <div>
-                                    <img src="./productos/<?php echo $datos[$i]['Imagen'] ;?>"><br>
-                                    <span> <?php echo $datos[$i]['Nombre']; ?></span><br>
-                                    <span>Precio: <?php echo $datos[$i]['Precio'];?></span><br>
-                                    <span>cantidad: <input type="text" value="<?php echo $datos[$i]['Cantidad'];?>"></span><br>
-                                    <span>Subtotal: <?php echo $datos[$i]['cantidad']*$datos[$i]['Precio'];?></span><br>
-
-
-                                </div>
-                            </div>
-
-                <?php 
-                    $total=( $datos[$i]['Precio']*$datos[$i]['Cantidad'])+$total;
-
-                        }
-
-                    }else{
-                        echo "<div><h2>no hay mascotas añadidas </h2></div>"."<br>";
-                        
-                    }
-                    echo ("<div><h2><br>total: ". $total ."<br><br></h2></div> ");
-                    
-                ?>
-
-                <div><a href="./" scripts="margin:auto;">ver catalogo</a></div>
-        
+            <?php 
+            
+            $total=0;
+            if(isset($_SESSION['carrito'])){
+                $datos=$_SESSION["carrito"];
                 
-
+                for ($i=0; $i < count($datos); $i++) { 
+                    ?>
+                    
+                    <div class="producto">
+                        <div>
+                            <img src="./productos/<?php echo $datos[$i]['Imagen'] ;?>"><br>
+                            <span> <?php echo $datos[$i]['Nombre']; ?></span><br>
+                            <span>Precio: <?php echo $datos[$i]['Precio'];?></span><br>
+                            <span>cantidad: <input type="text" value="<?php echo $datos[$i]['Cantidad'];?>"></span><br>
+                            <span>Subtotal: <?php echo $datos[$i]['cantidad']*$datos[$i]['Precio'];?></span><br>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    <?php 
+                    $total=( $datos[$i]['Precio']*$datos[$i]['Cantidad'])+$total;
+                    
+                }
+                
+            }else{
+                echo "<div><center><h2>no hay mascotas añadidas </h2></center></div>"."<br>";
+                
+            }
+            echo ("<div><center><h2><br>total: ". $total ."<br><br></h2></center></div> ");
+            
+            ?>
+            
+            <div>
+                <center><a href="./" class="btn btn-1 hover-in-shadow outer-shadow">ver catalogo</a></center>
             </div>
         </div>
     </section>
     <!-- service section end -->
-
-
+    
+    
     <script src="./assets/scripts/hamburger.js"></script>
 </body>
 </html>
