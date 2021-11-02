@@ -2,39 +2,40 @@
 session_start();
 include './conexion.php';
 if (isset($_SESSION['carrito'])) {
-    $arreglo=$_SESSION['carrito'];
-    $encontro=false;
-    $numero=0;
-    
-    for ($i=0; $i < count($arreglo) ; $i++) { 
-        if ($arreglo[$i]['Id'] == $_GET['id']) {
-            $encontro=true;
-            $numero=$i;
-        }
-    }
-    if ($encontro==true) {
-        $arreglo[$numero]['Cantidad'] = $arreglo[$numero]['Cantidad']+1;
-        $_SESSION['carrito'] = $arreglo;
-    }else {
-        $nombre = "";
-        $precio = 0;
-        $imagen ="";
-        $re = $conn->query("SELECT * FROM productos WHERE id=".$_GET['id']);
-        while ($f = mysqli_fetch_array($re)) {
-            $nombre = $f['nombre'];
-            $precio = $f['precio'];
-            $imagen = $f['imagen'];
-        }
-        $datosNuevos= Array("Id"     =>$_GET['id'],
-        "Nombre" =>$nombre,
-        "Precio" =>$precio,
-        "Imagen" =>$imagen, 
-        "Cantidad" => 1
-        );
-        array_push($arreglo, $datosNuevos);
-        $_SESSION['carrito'] = $arreglo;
-    }
-    
+    if(isset($_GET['id'])){
+            $arreglo=$_SESSION['carrito'];
+            $encontro=false;
+            $numero=0;
+            
+            for ($i=0; $i < count($arreglo) ; $i++) { 
+                if ($arreglo[$i]['Id'] == $_GET['id']) {
+                    $encontro=true;
+                    $numero=$i;
+                }
+            }
+            if ($encontro==true) {
+                $arreglo[$numero]['Cantidad'] = $arreglo[$numero]['Cantidad']+1;
+                $_SESSION['carrito'] = $arreglo;
+            }else {
+                $nombre = "";
+                $precio = 0;
+                $imagen ="";
+                $re = $conn->query("SELECT * FROM productos WHERE id=".$_GET['id']);
+                while ($f = mysqli_fetch_array($re)) {
+                    $nombre = $f['nombre'];
+                    $precio = $f['precio'];
+                    $imagen = $f['imagen'];
+                }
+                $datosNuevos= Array("Id"     =>$_GET['id'],
+                "Nombre" =>$nombre,
+                "Precio" =>$precio,
+                "Imagen" =>$imagen, 
+                "Cantidad" => 1
+                );
+                array_push($arreglo, $datosNuevos);
+                $_SESSION['carrito'] = $arreglo;
+            }
+}
     
     
 }else {
@@ -86,8 +87,9 @@ if (isset($_SESSION['carrito'])) {
 
 
     <script type="text/javascript " href="./js/scripts.js "></script>
-    <script type="text/javascript " href="js/hamburguer.js ">
-    </script>
+    <script type="text/javascript " href="js/hamburguer.js "></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 
 <body>
@@ -154,43 +156,47 @@ if (isset($_SESSION['carrito'])) {
                     
                     for ($i=0; $i < count($datos); $i++) { 
                         ?>
-                <div class="service-item productos">
-                    <div class="service-item-inner outer-shadow hover-in-shadow ">
+                <div class="service-item producto">
+                    <div class="service-item-inner">
                         <img class="icon" src="./productos/<?php echo $datos[$i]['Imagen'];?>">
                         <span> <?php echo $datos[$i]['Nombre']; ?></span><br>
                         <span>Precio: <?php echo $datos[$i]['Precio'];?></span><br>
-                        <span>cantidad: <input type="text" value="<?php echo $datos[$i]['Cantidad'];?>"></span><br>
-                        <span>Subtotal: <?php echo $datos[$i]['Cantidad']*$datos[$i]['Precio'];?></span><br>
+                        <label>cantidad: 
+                            <input type="text"  value="<?php echo $datos[$i]['Cantidad'] ?>"  data-precio="<?php echo $datos[$i]['Precio'];?>" data-id="<?php echo $datos[$i]['Id'];?>" class="cantidad" >
+                        </label><br>
+                        <span class="subtotal">Subtotal: <?php echo $datos[$i]['Cantidad']*$datos[$i]['Precio'];?></span><br>
                     </div>
                 </div>
 
 
                 <?php 
-                    $total=( $datos[$i]['Precio']*$datos[$i]['Cantidad'])+$total;
+                    $total=($datos[$i]['Precio']*$datos[$i]['Cantidad'])+$total;
                     
                     }
                 
                 }else{
-                    echo "<div><center><h2>no hay mascotas añadidas </h2></center></div>"."<br>";
-                }
-            
+                    echo "<center><h2>no hay mascotas añadidas </h2></center>";
+                }                        
             ?>
+                    
 
 
 
 
             </div>
+            <div>
+                <center><h2 class='total'>total: "<?php echo $total ?>"</h2></center>
+            </div>
+            <center><a href="./" class="btn btn-1 hover-in-shadow outer-shadow">ver catalogo</a></center>
 
     </section>
-    <div>
-        <?php echo ("<div><center><h2><br>total: ". $total ."<br><br></h2></center></div> "); ?>
-        <center><a href="./" class="btn btn-1 hover-in-shadow outer-shadow">ver catalogo</a></center>
-    </div>
+    
 
     <!-- service section end -->
 
 
     <script src="./assets/scripts/hamburger.js"></script>
+    <script src="./assets/scripts/modificar.js"></script>
 </body>
 
 </html>
