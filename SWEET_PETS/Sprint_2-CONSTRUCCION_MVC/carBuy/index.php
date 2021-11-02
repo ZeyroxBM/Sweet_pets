@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./assets/css/index/hed-sect.css">
     <link rel="stylesheet" href="./assets/css/index/ab-sec.css">
     <link rel="stylesheet" href="./assets/css/index/nav-section.css">
-    <link rel="stylesheet" href="./assets/css/index/serv-sec.css">
+    <link rel="stylesheet" href="./assets/css/index/serv-sect.css">
 
     <!-- boxicons link -->
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
