@@ -10,8 +10,17 @@
             $imagen ="";
             $re = $conn->query("SELECT * FROM productos WHERE id=".$_GET['id']);
                 while ($f = mysqli_fetch_array($re)) {
-                # code...
-            }
+                    $nombre = $f['nombre'];
+                    $precio = $f['precio'];
+                    $imagen = $f['imagen'];
+                }
+                $arreglo[]= Array("Id"     =>$_GET['id'],
+                                  "Nombre" =>$nombre,
+                                  "Precio" =>$precio,
+                                  "Imagen" =>$imagen, 
+                                  "Cantidad" => 1
+                );
+                $_SESSION['carrito']=$arreglo;
         }
     }
 ?>
@@ -120,7 +129,7 @@
                             <span> <?php echo $datos[$i]['Nombre']; ?></span><br>
                             <span>Precio: <?php echo $datos[$i]['Precio'];?></span><br>
                             <span>cantidad: <input type="text" value="<?php echo $datos[$i]['Cantidad'];?>"></span><br>
-                            <span>Subtotal: <?php echo $datos[$i]['cantidad']*$datos[$i]['Precio'];?></span><br>
+                            <span>Subtotal: <?php echo $datos[$i]['Cantidad']*$datos[$i]['Precio'];?></span><br>
                             
                             
                         </div>
