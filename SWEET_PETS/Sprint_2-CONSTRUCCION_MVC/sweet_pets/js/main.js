@@ -1,3 +1,24 @@
+(() => {
+    const hamburgerBtn = document.querySelector(".hamburger-btn"),
+        navMenu = document.querySelector(".nav-menu"),
+        closeNavBtn = navMenu.querySelector(".close-nav-menu");
+
+    hamburgerBtn.addEventListener("click", showNavMenu);
+    closeNavBtn.addEventListener("click", hideNavMenu);
+
+
+    function showNavMenu() {
+        navMenu.classList.add("open");
+    }
+
+    function hideNavMenu() {
+        navMenu.classList.remove('open');
+    }
+
+
+})();
+
+
 /* ----------------------- about section tabs ----------------------- */
 
 (() => {
@@ -135,9 +156,8 @@ function bodyScrollingToggle() {
     function popupDetailsToggle() {
         if (projectDetailsContainer.classList.contains("active")) {
             projectDetailsContainer.classList.remove("active");
-            projectDetailsContainer.style.maxHeight =0 + "px";
-        } 
-        else {
+            projectDetailsContainer.style.maxHeight = 0 + "px";
+        } else {
             projectDetailsContainer.classList.add("active");
             projectDetailsContainer.style.maxheight = projectDetailsContainer.scrollHeight + "px";
         }
