@@ -1,11 +1,13 @@
 <?php 
 class Conexion{    
-    private $dsn='mysql:host=localhost;dbname=carritocompras';
+    private $dsn='mysql:host=localhost;dbname=compras';
     private $usr='root';
     private $psw='';  
     private $cnx;
+
 public function __construct(){
     try {
+
         $this->cnx=new PDO($this->dsn,$this->usr,$this->psw); 
         //echo 'clase padre <br>';
         //print_r($this->cnx);
