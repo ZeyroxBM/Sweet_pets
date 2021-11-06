@@ -1,6 +1,6 @@
 <?php 
 class Conexion{    
-    private $dsn='mysql:host=localhost;dbname=carritocompras';
+    private $dsn='mysql:host=localhost;dbname=adsi';
     private $usr='root';
     private $psw='';  
     private $cnx;

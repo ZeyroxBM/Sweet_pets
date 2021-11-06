@@ -107,6 +107,8 @@ if (isset($_SESSION['carrito'])) {
 
                     <a href="./# " class="user hover-in-shadow "><i class='bx bxs-user-circle'></i></a>
 
+                    <a href="./# " class="user hover-in-shadow ">Añadir mascota</a>
+
                     <div class="hamburger-btn hover-in-shadow ">
                         <span></span>
                     </div>
