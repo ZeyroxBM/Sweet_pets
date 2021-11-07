@@ -46,6 +46,8 @@
 .home-section .home-text .btn-1 {
     margin-top: 30px;
     background-color: #fff;
+    position: relative;
+    left: 40%;
 }
 
 .home-section .home-img .img-box {
