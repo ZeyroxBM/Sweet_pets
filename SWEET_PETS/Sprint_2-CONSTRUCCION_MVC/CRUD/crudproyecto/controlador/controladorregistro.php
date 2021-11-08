@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../vista/estilos.css">
+    <link rel="stylesheet" href="../vista/Estilos.css">
     <title>Document</title>
 </head>
 <body>
 <?php 
 require('../vista/indexinsertar.php');
-require('../dao/DaoAprendizImpl.php');
-$dao=new DaoAprendizImpl();
+require('../dao/DaoComprasImpl.php');
+$dao=new DaoComprasImpl();
 if (isset($_GET['boton'])) {
     $nombre=$_GET['nombre'];
-     $documento=$_GET['doc'];
-     $formacion=$_GET['forma'];
-     $sexo=$_GET['sexo']; 
-     $a=new Aprendiz($nombre,$documento,$formacion,$sexo);
+     $detalle=$_GET['detalle'];
+     $imagen=$_GET['imagen'];
+     $precio=$_GET['precio']; 
+     $a=new compras($nombre,$detalle,$imagen,$precio);
     $dao->registrar($a);
-    echo "REGISTRO INSERTADO CON EXITO";    
+    echo "DATOS INSERTADOS CON EXITO";    
 }
            
 ?>    

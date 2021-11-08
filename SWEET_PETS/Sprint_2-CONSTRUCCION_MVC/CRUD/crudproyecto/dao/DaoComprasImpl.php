@@ -12,12 +12,12 @@ class DaoComprasImpl extends Conexion implements DaoCompras
         try {
             if ($this->getCnx() != null) {
                 $nombre = $a->getNombre();
-                $valor = $a->getValor();
-                $cantidad = $a->getCantidad();
-                $fecha = $a->getFecha();
-                $sql = "insert into producto (nombre,valor,cantidad, fecha) values('$nombre','$valor','$cantidad','$fecha')";
+                $detalle = $a->getDetalle();
+                $imagen = $a->getImagen();
+                $precio = $a->getPrecio();
+                $sql = "insert into productos (nombre,detalle,imagen, precio) values('$nombre','$detalle','$imagen','$precio')";
                 $stmt = $this->getCnx()->prepare($sql);
-                $stmt->execute(['$nombre', '$valor', '$cantidad', '$fecha']);
+                $stmt->execute(['$nombre', '$detalle', '$imagen', '$precio']);
             } else {
                 echo $this->getCnx() . ' Es nulo <br>';
             }
@@ -28,16 +28,16 @@ class DaoComprasImpl extends Conexion implements DaoCompras
     public function modificar(Compras $a)
     {
         $nombre = $a->getNombre();
-        $valor = $a->getValor();
-        $cantidad = $a->getCantidad();
-        $fecha = $a->getFecha();
+        $detalle = $a->getDetalle();
+        $imagen = $a->getImagen();
+        $precio = $a->getPrecio();
         $stmt = $this->getCnx()->prepare(
-            "update producto 
+            "update productos
             set
             nombre ='$nombre',
-            valor ='$valor',         
-            cantidad = '$cantidad',
-            fecha ='$fecha' 
+            detalle ='$detalle',         
+            imagen= '$imagen',
+            precio='$precio' 
             where nombre ='$nombre'");
         $stmt->execute();
     }
@@ -45,7 +45,7 @@ class DaoComprasImpl extends Conexion implements DaoCompras
     public function eliminar(Compras $a)
     {
         $nombre = $a->getNombre();
-        $stmt = $this->getCnx()->prepare("delete from producto where nombre='$nombre'");
+        $stmt = $this->getCnx()->prepare("delete from productos where nombre='$nombre'");
         $stmt->execute();
     }
     //public function listar();
@@ -53,15 +53,15 @@ class DaoComprasImpl extends Conexion implements DaoCompras
     {
         $lista = null;
         try {
-            $stmt = $this->getCnx()->prepare("select * from producto");
+            $stmt = $this->getCnx()->prepare("select * from productos");
             $lista = array();
             $stmt->execute();
             foreach ($stmt as $key) {
                 $a = new Compras(null, null, null, null);
-                $a->setNombre($key['nombre']);
-                $a->setValor($key['valor']);
-                $a->setCantidad($key['cantidad']);
-                $a->setFecha($key['fecha']);
+                $a->getNombre($key['nombre']);
+                $a->getDetalle($key['detalle']);
+                $a->getImagen($key['imagen']);
+                $a->getPrecio($key['precio']);
                 array_push($lista, $a);
             }
             //$this->getCnx()->close();
@@ -73,19 +73,19 @@ class DaoComprasImpl extends Conexion implements DaoCompras
     // public function buscar($campo,$dato);
     public function buscar(Compras $a)
     {
-        $lista = null;
+        $lista= null;
         try {
             $nombre = $a->getNombre();
-            $stmt = $this->getCnx()->prepare("select * from producto where nombre='$nombre'");
-            $lista = array();
+            $stmt = $this->getCnx()->prepare("select * from productos where nombre='$nombre'");
+            $listar = array();
             $stmt->execute(array($nombre));
             $r = $stmt->fetch(PDO::FETCH_OBJ);
 
             $a = new Compras(null, null, null, null);
-            $a->setNombre($r->nombre);
-            $a->setValor($r->valor);
-            $a->setCantidad($r->cantidad);
-            $a->setFecha($r->fecha);
+            $a->getNombre($r->nombre);
+            $a->getDetalle($r->detalle);
+            $a->getImagen($r->imagen);
+            $a->getPrecio($r->precio);
             //array_push($lista, $a);
 
             //$this->getCnx()->close();

@@ -7,7 +7,7 @@ body{
     
     font-size: 16px;
     font-family: "Impact";
-    /* background-image: url(../img2.jpg); */
+    
     
 }
 .wrap{
@@ -16,7 +16,6 @@ body{
     margin:auto;
 }
 form{
-    background-image: url(../img2.jpg);
     width: 90%;
     margin: 10px 0;
     padding: 50px;
@@ -118,4 +117,3 @@ form input[type="submit"]:hover{
         float:left;
         cursor: pointer;
     }
-    

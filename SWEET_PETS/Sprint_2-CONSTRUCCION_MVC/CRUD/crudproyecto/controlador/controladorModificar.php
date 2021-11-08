@@ -3,10 +3,10 @@ require('../dao/DaoComprasImpl.php');
 $dao = new DaoComprasImpl();
 if (isset($_GET['boton'])) {
     $nombre = $_GET['nombre'];
-    $valor = $_GET['valor'];
-    $cantidad = $_GET['cantidad'];
-    $fecha = $_GET['fecha'];
-    $a = new Compras($nombre, $valor, $cantidad, $fecha);
+    $detalle = $_GET['detalle'];
+    $imagen = $_GET['imagen'];
+    $precio = $_GET['precio'];
+    $a = new Compras($nombre, $detalle, $imagen, $precio);
     $dao->modificar($a);
     require('../controlador/controladorlistar.php');
 }

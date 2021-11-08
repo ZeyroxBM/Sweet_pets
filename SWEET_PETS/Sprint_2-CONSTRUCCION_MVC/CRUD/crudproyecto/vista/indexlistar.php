@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Estilos.css">
+    <link rel="stylesheet" href="estilos.css">
     <title>Listar</title>
 </head>
 
 <body>
     <div class="div">
         <table class="table">
-            <caption>COMPRAS</caption>
+            <caption>PRODUCTOS</caption>
             <thead>
                 <tr>
-                    <th>NOMBRE PRODUCTO</th>
-                    <th>VALOR PRODUCTO</th>
-                    <th>CANTIDAD PRODUCTOS COMPRADOS</th>
-                    <th>FECHA DE COMPRA</th>
+                    <th>NOMBRE </th>
+                    <th>DETALLE</th>
+                    <th>IMAGEN</th>
+                    <th>PRECIO</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -29,9 +29,9 @@
 
                 foreach ($datos as $key) {
                     echo "<tr><td>" . $key->getNombre() . "</td>";
-                    echo "<td>" . $key->getValor() . "</td>";
-                    echo "<td>" . $key->getCantidad() . "</td>";
-                    echo "<td>" . $key->getFecha() . "</td>";
+                    echo "<td>" . $key->getDetalle() . "</td>";
+                    echo "<td>" . $key->getImagen() . "</td>";
+                    echo "<td>" . $key->getPrecio() . "</td>";
                     //echo "<td><input type='submit' value='Editar' class='btn btn-primary' /></td>";
                     // echo "<td><a href='?action=eliminar&id=". $key->getNombre()  . "' class='btn btn-primary'>Eliminar</a></td></tr>";
                     echo "<td><a href='../controlador/controladorEliminar.php?nombre=" . $key->getNombre()  . "' class='btn btn-primary'>Eliminar</a></td>";
