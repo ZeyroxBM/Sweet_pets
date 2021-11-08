@@ -25,6 +25,7 @@
                         <h3>¿Aún no tienes una cuenta?</h3>
                         <p>Regístrate para que puedas iniciar sesión</p>
                         <button id="btn__registrarse">Regístrarse</button>
+                        <button><a href="./index.html">Inicio</a></button>
                     </div>
                 </div>
 
