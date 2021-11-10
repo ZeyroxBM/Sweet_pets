@@ -61,8 +61,8 @@
         <div class="nav-menu-inner">
             <ul>
                 <li><a href="#home" class="link-item inner-shadow active">Home</a></li>
-                <li><a href="#about" class="link-item outer-shadow hover-in-shadow">Agrgar Mascota</a></li>
-                <li><a href="#services" class="link-item outer-shadow hover-in-shadow">Agregar Detalle Mascota</a></li>
+                <!-- <li><a href="#about" class="link-item outer-shadow hover-in-shadow">Agregar Mascota</a></li> -->
+                <li><a href="../daocrudmvc/vista/index.php" class="link-item outer-shadow hover-in-shadow">Agregar Detalle Mascota</a></li>
             </ul>
         </div>
         <!-- copyright text -->

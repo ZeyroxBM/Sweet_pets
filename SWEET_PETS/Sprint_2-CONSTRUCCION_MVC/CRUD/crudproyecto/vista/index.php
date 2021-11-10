@@ -9,8 +9,8 @@
 <body>
 <div class="div">
     <?php 
-    $compras=$dao->listar();
-    foreach ($compras as $key) {
+    $Compras=$dao->$listar();
+    foreach ($Compras as $key) {
         echo $key->getNombre().'<br>';
     }
     ?>

@@ -25,7 +25,7 @@
                         <h3>¿Aún no tienes una cuenta?</h3>
                         <p>Regístrate para que puedas iniciar sesión</p>
                         <button id="btn__registrarse">Regístrarse</button>
-                        <button><a href="./index.html">Inicio</a></button>
+                        <button><a href="../../sweet_pets/index.html">Inicio</a></button>
                     </div>
                 </div>
 
@@ -34,8 +34,8 @@
                     <!--Login-->
                     <form action="login.php" method="post" class="formulario__login">
                         <h2>Iniciar Sesión</h2>
-                        <input type="email" name="email" placeholder="Correo Electronico">
-                        <input type="password" name="psw" placeholder="Contraseña">
+                        <input type="email" name="email" placeholder="Correo Electronico" required>
+                        <input type="password" name="psw" placeholder="Contraseña" required>
                         <button type="submit">Entrar</button>
                     </form>
 
@@ -43,10 +43,10 @@
                     <!--Register-->
                     <form action="registrar.php" method="post" enctype="multipart/form-data" class="formulario__register">
                         <h2>Regístrarse</h2>
-                        <input type="text" name="name" placeholder="Nombre completo">
-                        <input type="email" name="email" placeholder="Correo Electronico">
-                        <input class="img" type="file" name="foto" placeholder="Foto usuario">
-                        <input type="password" name="psw" placeholder="Contraseña">
+                        <input type="text" name="name" placeholder="Nombre completo" required>
+                        <input type="email" name="email" placeholder="Correo Electronico" required>
+                        <input class="img" type="file" name="foto" placeholder="Foto usuario" required>
+                        <input type="password" name="psw" placeholder="Contraseña" required>
                         <button type="submit">Regístrarse</button>
                     </form>
                 </div>
