@@ -49,7 +49,6 @@ tr:nth-child(even){
 
 tr:hover td{
 	background-color:#b2f7ef96;
-	color: white;
 }
 
 td input#reset {

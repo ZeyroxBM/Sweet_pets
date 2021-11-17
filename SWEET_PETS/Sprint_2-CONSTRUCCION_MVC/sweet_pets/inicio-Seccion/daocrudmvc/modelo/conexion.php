@@ -1,5 +1,5 @@
 <?php
-    $contraseña = '';
+    $contraseña = 'SweetPets2021';
     $usuario = 'root';
     $nombre_bd = 'u991668360_sweetpets';
 
