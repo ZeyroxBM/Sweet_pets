@@ -1,7 +1,7 @@
 <?php
     $contraseña = '';
     $usuario = 'root';
-    $nombre_bd = 'carritocompras';
+    $nombre_bd = 'u991668360_sweetpets';
 
     try {
         $bd = new PDO(
