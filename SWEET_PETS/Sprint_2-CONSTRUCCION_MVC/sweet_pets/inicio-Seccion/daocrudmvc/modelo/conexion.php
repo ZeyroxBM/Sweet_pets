@@ -1,7 +1,7 @@
 <?php
-    $contraseña = 'SweetPets2021';
+    $contraseña = ' ';
     $usuario = 'root';
-    $nombre_bd = 'u991668360_sweetpets';
+    $nombre_bd = 'u991668360_SweetPets';
 
     try {
         $bd = new PDO(
