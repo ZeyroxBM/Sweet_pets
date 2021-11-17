@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Carrito de Compras</title>
+    <link rel="icon" href="../../img/imagenes/logoPNG.png">
 
     <!-- link css -->
     <link rel="stylesheet" href="./assets/css/index/glob.css">
@@ -41,7 +42,7 @@
 
                         <a href="./misProductos.php	" class="cart hover-in-shadow"><i class='bx bx-cart-alt'></i></a>
                 
-                        <a href="./#" class="user hover-in-shadow"><i class='bx bxs-user-circle'></i></a>
+                        <a href="./perfil-usuario/perfil-usuario.php" class="user hover-in-shadow"><i class='bx bxs-user-circle'></i></a>
                     
                     <div class="hamburger-btn hover-in-shadow">
                         <span></span>
@@ -66,7 +67,7 @@
             </ul>
         </div>
         <!-- copyright text -->
-        <p class="copyright-text">&copy; 2021 The ZeyroxBM</p>
+        <p class="copyright-text">&copy; 2021 Sweet Pets</p>
     </nav>
 
     <!-- menu navegacion end -->

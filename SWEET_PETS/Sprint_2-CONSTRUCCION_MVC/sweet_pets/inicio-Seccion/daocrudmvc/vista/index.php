@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalles mascota</title>
     <link rel="stylesheet" href="../estilos/css.css">
+    <link rel="icon" href="../../../img/imagenes/logoPNG.png">
 </head>
 <body>
         <h1>Descripccion Mascota</h1>
