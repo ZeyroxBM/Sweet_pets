@@ -10,15 +10,16 @@
     <?php
         include("conexion.php");
 
-        $consulta = "SELECT * FROM fotos_galeria";
+        $consulta = "SELECT * FROM productos";
         $resultado= $conexion->query($consulta);
         
         while($mostrar =$resultado->fetch_assoc()){
     ?>
         <tr>
-            <td><?php echo $mostrar['codigo'];?></td>
             <td><?php echo $mostrar['nombre'];?></td>
-            <td><img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['foto']);?>"/></td>
+            <td><?php echo $mostrar['detalle'];?></td>
+            <td><img src="data:image/jpg;base64,<?php echo base64_encode($mostrar['imagen']);?>"/></td>
+            <td><?php echo $mostrar['precio'];?></td>
         </tr>
     <?php        
         }

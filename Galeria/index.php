@@ -11,8 +11,14 @@
         <label for="nombre">nombre</label>
         <input type="text" name="nombreImagen" value="" required>
 
-        <label for="nombre">FOTO</label>
-        <input type="file" name="foto" value="" required>
+        <label for="detalle">Descripcion corta</label>
+        <input type="text" name="detalle" value="" required>
+
+        <label for="imagen">FOTO</label>
+        <input type="file" name="imagen" value="" required>
+
+        <label for="precio">precio si aplica</label>
+        <input type="text" name="precio" value="" required>
 
         <input type="submit" name="enviar" value="Enviar">
     </form>

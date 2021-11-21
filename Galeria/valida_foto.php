@@ -1,8 +1,10 @@
 <?php
 include 'conexion.php';
 $nombre=$_POST["nombreImagen"];
-$foto= addslashes(file_get_contents($_FILES['foto']['tmp_name']));
-$consulta= "INSERT INTO fotos_galeria (nombre,foto) values('$nombre','$foto')";
+$detalle=$_POST["detalle"];
+$precio=$_POST["precio"];
+$imagen= addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
+$consulta= "INSERT INTO productos (nombre,detalle,imagen,precio) values('$nombre','$detalle','$imagen','$precio')";
 $resultado = $conexion->query($consulta);
 
 if($resultado){
